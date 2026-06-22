@@ -22,4 +22,21 @@ Rating_Diff: 1.949 : -0.901
 
 # Q3 Answer:-
 
+correlation_matrix round 3=> : 
+turns  white_rating  black_rating  rating_diff  time_control
+turns         1.000         0.130         0.160       -0.127        -0.059
+white_rating  0.130         1.000         0.634        0.073        -0.070
+black_rating  0.160         0.634         1.000        0.025        -0.077
+rating_diff  -0.127         0.073         0.025        1.000         0.054
+time_control -0.059        -0.070        -0.077        0.054         1.000
 
+# Q4 Answer:-
+
+contingency_table:
+
+winner_group  Advanced  Beginner  Draw  Expert  Intermediate
+white_group                                                 
+Advanced          6119        32   346     821           496
+Beginner           227       835    65      45           422
+Expert             336         2   317    4184            41
+Intermediate       950       149   222     246          4203
