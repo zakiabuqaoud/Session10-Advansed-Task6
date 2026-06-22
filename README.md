@@ -16,4 +16,10 @@ max      349.000000   1605.000000
 
 # Q2 Answer:-
 
+Skewness:
+Turns: 0.897 : -1.611
+Rating_Diff: 1.949 : -0.901
+
+# Q3 Answer:-
+
 
