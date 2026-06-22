@@ -40,3 +40,13 @@ Advanced          6119        32   346     821           496
 Beginner           227       835    65      45           422
 Expert             336         2   317    4184            41
 Intermediate       950       149   222     246          4203
+
+# Q5 Answer:-
+
+# parametric
+Rated: 61.96, 95% CI: [61.44, 62.48]
+Unrated: 54.27, 95% CI: [53.26, 55.28]
+
+# bootstrap
+Rated - bootstrap: 61.96, 95% CI: [61.44, 62.48]
+Unrated - bootstrap: 54.27, 95% CI: [53.29, 55.29]

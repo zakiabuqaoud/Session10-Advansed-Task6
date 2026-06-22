@@ -25,6 +25,29 @@ def get_winner_group(row):
     else:
         return 'Draw'
 
+# for Q5
+def parametric_ci(data, confidence=0.95):
+    n = len(data)
+    mean = np.mean(data)
+    std_err = stats.sem(data)
+    t_critical = stats.t.ppf((1 + confidence) / 2, n - 1)
+    margin = t_critical * std_err
+    return mean, mean - margin, mean + margin
+
+# for Q5
+def bootstrap_ci(data, n_bootstrap=10000, confidence=0.95):
+    n = len(data)
+    means = []
+
+    for _ in range(n_bootstrap):
+        sample = np.random.choice(data, size=n, replace=True)
+        means.append(np.mean(sample))
+
+    lower = np.percentile(means, (1 - confidence) / 2 * 100)
+    upper = np.percentile(means, (1 + confidence) / 2 * 100)
+
+    return np.mean(means), lower, upper
+
 def q1():
     print("Q1 is Started...")
     print("Q1: Descriptive statistics profile of chess turns & rating_diff ?")
@@ -79,6 +102,27 @@ def q4():
 
     print("Question 4 is finished")
 
+def q5():
+    print("Question 5 is started")
+    rated_turns = chess_games_df[chess_games_df['rated'] == True]['turns']
+    unrated_turns = chess_games_df[chess_games_df['rated'] == False]['turns']
+
+    # parametric_ci
+    mean_r, ci_low_r, ci_high_r = parametric_ci(rated_turns)
+    mean_u, ci_low_u, ci_high_u = parametric_ci(unrated_turns)
+
+    print(f"Rated: {mean_r:.2f}, 95% CI: [{ci_low_r:.2f}, {ci_high_r:.2f}]")
+    print(f"Unrated: {mean_u:.2f}, 95% CI: [{ci_low_u:.2f}, {ci_high_u:.2f}]")
+
+    # bootstrap_ci
+    boot_mean_r, boot_low_r, boot_high_r = bootstrap_ci(rated_turns)
+    boot_mean_u, boot_low_u, boot_high_u = bootstrap_ci(unrated_turns)
+
+    print(f"Rated - bootstrap: {boot_mean_r:.2f}, 95% CI: [{boot_low_r:.2f}, {boot_high_r:.2f}]")
+    print(f"Unrated - bootstrap: {boot_mean_u:.2f}, 95% CI: [{boot_low_u:.2f}, {boot_high_u:.2f}]")
+
+    print("Question 5 is finished")
+
 
 
  #  ############## Start From Here ################
@@ -104,3 +148,6 @@ q3()
 
 # ########################## Question 4
 q4()
+
+# ########################## Question 5
+q5()
